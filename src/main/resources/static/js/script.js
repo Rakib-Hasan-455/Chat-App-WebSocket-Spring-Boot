@@ -10,9 +10,6 @@ function sendMessage(){
     }
 
     stompClient.send("/app/message",{},JSON.stringify(jsonOb));
-
-
-
 }
 
 
@@ -56,26 +53,27 @@ function showMessage(message)
 
 
 
-
 $(document).ready((e)=>{
 
 
     $("#login").click(()=>{
-
-
         let name=$("#name-value").val()
         localStorage.setItem("name",name)
         $("#name-title").html(`Welcome , <b>${name} </b>`)
         connect();
-
-
     })
+
+
+
 
     $("#send-btn").click(()=>{
         sendMessage()
         const firstNameInput = document.getElementById('message-value');
         firstNameInput.value=''
     })
+
+
+
 
     $("#logout").click(()=>{
 
@@ -91,4 +89,35 @@ $(document).ready((e)=>{
 
     })
 
-})
+        const input = document.getElementById("message-value");
+
+// Execute a function when the user presses a key on the keyboard
+        input.addEventListener("keypress", function(event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                // event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("send-btn").click();
+
+
+            }
+        });
+
+        const inputname = document.getElementById("name-value");
+
+// Execute a function when the user presses a key on the keyboard
+        inputname.addEventListener("keypress", function(event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                // event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("login").click();
+
+
+            }
+        });
+
+}
+)
