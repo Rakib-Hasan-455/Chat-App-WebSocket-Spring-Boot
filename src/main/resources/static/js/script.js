@@ -4,7 +4,6 @@ var stompClient=null
 
 function sendMessage(){
 
-
     let jsonOb={
         name:localStorage.getItem("name"),
         content:$("#message-value").val()
@@ -74,6 +73,8 @@ $(document).ready((e)=>{
 
     $("#send-btn").click(()=>{
         sendMessage()
+        const firstNameInput = document.getElementById('message-value');
+        firstNameInput.value=''
     })
 
     $("#logout").click(()=>{
